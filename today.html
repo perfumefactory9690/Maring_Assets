@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>마링앤모링 오늘의 향기로 이동 중...</title>
+    <script>
+        const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/perfumefactory9690/Maring_Assets/main/redirect.json';
+
+        console.log("🚀 마링앤모링 실시간 링크 탐색 중...");
+        
+        fetch(GITHUB_JSON_URL)
+            .then(response => {
+                if (!response.ok) throw new Error("네트워크 응답 오류");
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.url) {
+                    console.log("🎯 오늘 최적의 유입 경로 매칭 완: ", data.url);
+                    window.location.replace(data.url);
+                } else {
+                    window.location.replace("https://smartstore.naver.com/maringnmoring");
+                }
+            })
+            .catch(error => {
+                console.error("❌ 연동 오류: ", error);
+                window.location.replace("https://smartstore.naver.com/maringnmoring");
+            });
+    </script>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 20%; font-family: sans-serif; color: #555;">
+        <p>🌸 마링앤모링 향기로운 순간으로 여행을 떠나는 중입니다...</p>
+        <p style="font-size: 0.8rem; color: #999;">잠시만 기다려주셔유! 0.5초 뒤 리다이렉트 됩니다요!</p>
+    </div>
+</body>
+</html>
